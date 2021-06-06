@@ -8,7 +8,8 @@ import {
   View,
 } from "react-native";
 import { useSelector } from "react-redux";
-import Colors from "../../constants/Colors";
+import Colors from "../../theme/Colors";
+import Fonts from "../../theme/fonts";
 
 const ProductDetailScreen = (props) => {
   const { productId } = props.route.params;
@@ -28,7 +29,7 @@ const ProductDetailScreen = (props) => {
       ></Image>
       <View style={styles.actions}>
         <Button
-          color={Colors.primaryColor}
+          color={Colors.main.primary}
           title="Add to cart"
           onPress={() => {}}
         ></Button>
@@ -46,8 +47,14 @@ const styles = StyleSheet.create({
     color: "#888",
     textAlign: "center",
     marginVertical: 20,
+    fontFamily: Fonts.heading,
   },
-  description: { fontSize: 14, textAlign: "center", marginHorizontal: 20 },
+  description: {
+    fontSize: 14,
+    textAlign: "center",
+    marginHorizontal: 20,
+    fontFamily: Fonts.body,
+  },
   actions: { marginVertical: 10, alignItems: "center" },
 });
 

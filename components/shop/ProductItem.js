@@ -9,7 +9,8 @@ import {
   TouchableNativeFeedback,
   Platform,
 } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../../theme/Colors";
+import Fonts from "../../theme/fonts";
 
 const ProductItem = (props) => {
   let TouchableCmp = TouchableOpacity;
@@ -30,12 +31,12 @@ const ProductItem = (props) => {
             </View>
             <View style={styles.actions}>
               <Button
-                color={Colors.primaryColor}
+                color={Colors.main.primary}
                 title="View details"
                 onPress={props.onViewDetail}
               ></Button>
               <Button
-                color={Colors.primaryColor}
+                color={Colors.main.primary}
                 title="Add to cart"
                 onPress={props.onAddToCart}
               ></Button>
@@ -74,14 +75,14 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  title: { fontSize: 18, marginVertical: 4 },
+  title: { fontSize: 18, marginVertical: 4, fontFamily: Fonts.heading },
   details: {
     alignItems: "center",
     height: "20%",
     padding: 10,
     backgroundColor: "white",
   },
-  price: { fontSize: 14, color: "#888" },
+  price: { fontSize: 14, color: "#888", fontFamily: Fonts.heading },
   actions: {
     flexDirection: "row",
     justifyContent: "space-between",
