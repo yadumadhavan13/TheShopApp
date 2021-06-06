@@ -14,7 +14,9 @@ const ProductOverViewScreen = (props) => {
           title={item.title}
           price={item.price}
           image={item.imageUrl}
-          onViewDetail={() => {}}
+          onViewDetail={() => {
+            console.log("view details pressed");
+          }}
           onAddToCart={() => {}}
         ></ProductItem>
       )}
