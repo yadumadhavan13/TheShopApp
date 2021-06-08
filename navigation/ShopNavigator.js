@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Platform } from "react-native";
 import ProductOverViewScreen from "../screens/shop/ProductOverViewScreen";
 import ProductDetailScreen from "../screens/shop/ProductDetailScreen";
-import Fonts from "../theme/fonts";
+import Fonts from "../theme/Fonts";
 import Colors from "../theme/Colors";
 
 const ShopStack = createStackNavigator();

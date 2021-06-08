@@ -7,15 +7,17 @@ import {
   Image,
   View,
 } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../theme/Colors";
-import Fonts from "../../theme/fonts";
+import Fonts from "../../theme/Fonts";
+import * as cartActions from "../../store/actions/Cart";
 
 const ProductDetailScreen = (props) => {
   const { productId } = props.route.params;
   const selectedProduct = useSelector((state) =>
     state.products.availableProducts.find((item) => item.id === productId)
   );
+  const dispatch = useDispatch();
   React.useLayoutEffect(() => {
     props.navigation.setOptions({
       title: selectedProduct.title,
@@ -31,7 +33,9 @@ const ProductDetailScreen = (props) => {
         <Button
           color={Colors.main.primary}
           title="Add to cart"
-          onPress={() => {}}
+          onPress={() => {
+            dispatch(cartActions.addToCart(selectedProduct));
+          }}
         ></Button>
       </View>
       <Text style={styles.price}>${selectedProduct.price.toFixed(2)}</Text>

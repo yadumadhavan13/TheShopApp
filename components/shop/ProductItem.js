@@ -10,7 +10,7 @@ import {
   Platform,
 } from "react-native";
 import Colors from "../../theme/Colors";
-import Fonts from "../../theme/fonts";
+import Fonts from "../../theme/Fonts";
 
 const ProductItem = (props) => {
   let TouchableCmp = TouchableOpacity;

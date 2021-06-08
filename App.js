@@ -2,6 +2,7 @@ import React from "react";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import productsReducer from "./store/reducers/Products";
+import cartReducer from "./store/reducers/Cart";
 import Navigation from "./navigation/AppNavigator";
 import {
   useFonts as useOpenSansRegular,
@@ -11,10 +12,14 @@ import {
   useFonts as useOpenSansBold,
   OpenSans_700Bold,
 } from "@expo-google-fonts/open-sans";
+//import { composeWithDevTools } from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  cart: cartReducer,
 });
+
+//const store = createStore(rootReducer, composeWithDevTools());
 
 const store = createStore(rootReducer);
 
