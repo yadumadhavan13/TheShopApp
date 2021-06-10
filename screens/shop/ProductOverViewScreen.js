@@ -17,7 +17,9 @@ const ProductOverViewScreen = (props) => {
           <Item
             title="Cart"
             iconName={Platform.os === "android" ? "md-cart" : "ios-cart"}
-            onPress={() => {}}
+            onPress={() => {
+              props.navigation.navigate("Cart");
+            }}
           ></Item>
         </HeaderButtons>
       ),

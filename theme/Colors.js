@@ -6,7 +6,7 @@ const Colors = {
     muted: "#C6DAF7",
   },
   ui: {
-    primary: "#262626",
+    primary: "#C2185B",
     secondary: "#757575",
     tertiary: "#F1F1F1",
     quaternary: "#FFFFFF",

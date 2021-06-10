@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Platform } from "react-native";
 import ProductOverViewScreen from "../screens/shop/ProductOverViewScreen";
 import ProductDetailScreen from "../screens/shop/ProductDetailScreen";
+import CartScreen from "../screens/shop/CartScreen";
 import Fonts from "../theme/Fonts";
 import Colors from "../theme/Colors";
 
@@ -35,6 +36,13 @@ export const ShopNavigator = () => {
         component={ProductDetailScreen}
         options={({ navigation }) => ({
           title: "Product Detail",
+        })}
+      ></ShopStack.Screen>
+      <ShopStack.Screen
+        name="Cart"
+        component={CartScreen}
+        options={({ navigation }) => ({
+          title: "Cart",
         })}
       ></ShopStack.Screen>
     </ShopStack.Navigator>
