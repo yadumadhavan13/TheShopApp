@@ -3,7 +3,7 @@ import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import productsReducer from "./store/reducers/Products";
 import cartReducer from "./store/reducers/Cart";
-import Navigation from "./navigation/AppNavigator";
+import AppNavigator from "./navigation/AppNavigator";
 import {
   useFonts as useOpenSansRegular,
   OpenSans_400Regular,
@@ -37,7 +37,7 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <Navigation></Navigation>
+      <AppNavigator></AppNavigator>
     </Provider>
   );
 }
