@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19000,
-  "expoServerNgrokUrl": "https://x3-92m.anonymous.theshopapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.x3-92m.anonymous.theshopapp.exp.direct",
-  "ngrokPid": 31365,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "packagerPid": null,
   "webpackServerPort": null
 }
