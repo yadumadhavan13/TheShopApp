@@ -3,6 +3,7 @@ import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import productsReducer from "./store/reducers/Products";
 import cartReducer from "./store/reducers/Cart";
+import orderReducer from "./store/reducers/Orders";
 import AppNavigator from "./navigation/AppNavigator";
 import {
   useFonts as useOpenSansRegular,
@@ -17,6 +18,7 @@ import {
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
+  order: orderReducer,
 });
 
 //const store = createStore(rootReducer, composeWithDevTools());

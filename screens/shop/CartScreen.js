@@ -5,6 +5,7 @@ import CartItem from "../../components/shop/CartItem";
 import Colors from "../../theme/Colors";
 import Fonts from "../../theme/Fonts";
 import * as cartActions from "../../store/actions/Cart";
+import * as orderActions from "../../store/actions/Orders";
 
 const CartScreen = (props) => {
   const dispatch = useDispatch();
@@ -30,7 +31,13 @@ const CartScreen = (props) => {
         <Text style={styles.summaryText}>
           <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
         </Text>
-        <Button title="Order Now" disabled={cartItems.length === 0}></Button>
+        <Button
+          title="Order Now"
+          disabled={cartItems.length === 0}
+          onPress={() => {
+            dispatch(orderActions(cartItems, cartTotalAmount));
+          }}
+        ></Button>
       </View>
       <View>
         <FlatList
