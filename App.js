@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import productsReducer from "./store/reducers/Products";
 import cartReducer from "./store/reducers/Cart";
 import orderReducer from "./store/reducers/Orders";
-import AppNavigator from "./navigation/AppNavigator";
 import {
   useFonts as useOpenSansRegular,
   OpenSans_400Regular,
@@ -13,6 +12,7 @@ import {
   useFonts as useOpenSansBold,
   OpenSans_700Bold,
 } from "@expo-google-fonts/open-sans";
+import { ShopDrawerNavigator } from "./navigation/ShopNavigator";
 //import { composeWithDevTools } from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
@@ -39,7 +39,7 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <AppNavigator></AppNavigator>
+      <ShopDrawerNavigator></ShopDrawerNavigator>
     </Provider>
   );
 }

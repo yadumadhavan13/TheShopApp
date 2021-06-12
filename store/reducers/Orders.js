@@ -5,8 +5,8 @@ const initialState = {
   orders: [],
 };
 
-export default (state = initialState, actions) => {
-  switch (actions.type) {
+export default (state = initialState, action) => {
+  switch (action.type) {
     case ADD_ORDER:
       const newOrder = new Order(
         new Date().toString(),
