@@ -103,7 +103,7 @@ export const ShopDrawerNavigator = () => (
       initialRouteName="Products"
       screenOptions={createScreenOptions}
       drawerContentOptions={{
-        activeTintColor: Colors.primaryColor,
+        activeTintColor: Colors.main.primary,
         itemStyle: { marginVertical: 5 },
         labelStyle: { fontFamily: Fonts.heading },
       }}
