@@ -32,6 +32,7 @@ const CartScreen = (props) => {
           <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
         </Text>
         <Button
+          color={Colors.main.primary}
           title="Order Now"
           disabled={cartItems.length === 0}
           onPress={() => {
