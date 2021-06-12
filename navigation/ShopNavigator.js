@@ -25,11 +25,11 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-const ShopStack = createStackNavigator();
+const ProductStack = createStackNavigator();
 
-export const ShopStackNavigator = () => {
+export const ProductStackNavigator = () => {
   return (
-    <ShopStack.Navigator
+    <ProductStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: Platform.OS === "android" ? Colors.main.primary : "",
@@ -42,28 +42,56 @@ export const ShopStackNavigator = () => {
         },
       }}
     >
-      <ShopStack.Screen
+      <ProductStack.Screen
         name="Product"
         component={ProductOverViewScreen}
         options={({ navigation }) => ({
           title: "All Products",
         })}
-      ></ShopStack.Screen>
-      <ShopStack.Screen
+      ></ProductStack.Screen>
+      <ProductStack.Screen
         name="ProductDetail"
         component={ProductDetailScreen}
         options={({ navigation }) => ({
           title: "Product Detail",
         })}
-      ></ShopStack.Screen>
-      <ShopStack.Screen
+      ></ProductStack.Screen>
+      <ProductStack.Screen
         name="Cart"
         component={CartScreen}
         options={({ navigation }) => ({
           title: "Cart",
         })}
-      ></ShopStack.Screen>
-    </ShopStack.Navigator>
+      ></ProductStack.Screen>
+    </ProductStack.Navigator>
+  );
+};
+
+const OrderStack = createStackNavigator();
+
+export const OrderStackNavigator = () => {
+  return (
+    <OrderStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Platform.OS === "android" ? Colors.main.primary : "",
+        },
+        headerTintColor:
+          Platform.OS === "android" ? "white" : Colors.main.primary,
+        headerTitleStyle: {
+          fontWeight: "bold",
+          fontFamily: Fonts.heading,
+        },
+      }}
+    >
+      <OrderStack.Screen
+        name="Order"
+        component={OrderScreen}
+        options={({ navigation }) => ({
+          title: "Orders",
+        })}
+      ></OrderStack.Screen>
+    </OrderStack.Navigator>
   );
 };
 
@@ -80,8 +108,8 @@ export const ShopDrawerNavigator = () => (
         labelStyle: { fontFamily: Fonts.heading },
       }}
     >
-      <ShopDrawer.Screen name="Products" component={ShopStackNavigator} />
-      <ShopDrawer.Screen name="Order" component={OrderScreen} />
+      <ShopDrawer.Screen name="Products" component={ProductStackNavigator} />
+      <ShopDrawer.Screen name="Order" component={OrderStackNavigator} />
     </ShopDrawer.Navigator>
   </NavigationContainer>
 );

@@ -3,6 +3,7 @@ import { FlatList, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../components/ui/HeaderButton";
+import { Platform } from "react-native";
 
 const OrderScreen = (props) => {
   const { navigation } = props;

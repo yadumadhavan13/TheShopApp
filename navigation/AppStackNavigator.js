@@ -1,11 +1,11 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { ShopStackNavigator } from "./ShopNavigator";
+import { ProductStackNavigator } from "./ShopNavigator";
 
 function AppStackNavigator() {
   return (
     <NavigationContainer>
-      <ShopStackNavigator></ShopStackNavigator>
+      <ProductStackNavigator></ProductStackNavigator>
     </NavigationContainer>
   );
 }
