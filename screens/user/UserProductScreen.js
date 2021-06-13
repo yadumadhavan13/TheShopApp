@@ -1,14 +1,16 @@
 import React from "react";
 import { Button, FlatList } from "react-native";
 import ProductItem from "../../components/shop/ProductItem";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../components/ui/HeaderButton";
 import { Platform } from "react-native";
 import Colors from "../../theme/Colors";
+import * as productActions from "../../store/actions/Products";
 
 const UserProductScreen = (props) => {
   const { navigation } = props;
+  const dispatch = useDispatch();
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -44,7 +46,9 @@ const UserProductScreen = (props) => {
           <Button
             color={Colors.main.primary}
             title="Delete"
-            onPress={() => {}}
+            onPress={() => {
+              dispatch(productActions.deleteProduct(item.id));
+            }}
           ></Button>
         </ProductItem>
       )}

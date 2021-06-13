@@ -8,7 +8,6 @@ import {
   TouchableNativeFeedback,
   Platform,
 } from "react-native";
-
 import Fonts from "../../theme/Fonts";
 
 const ProductItem = (props) => {
@@ -19,7 +18,7 @@ const ProductItem = (props) => {
   return (
     <View style={styles.product}>
       <View style={styles.touchable}>
-        <TouchableCmp onPress={props.onViewDetail} useForeground>
+        <TouchableCmp onPress={props.onSelect} useForeground>
           <View>
             <View style={styles.imageContainer}>
               <Image style={styles.image} source={{ uri: props.image }}></Image>
