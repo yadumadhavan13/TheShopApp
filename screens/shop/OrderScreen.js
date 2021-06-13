@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../components/ui/HeaderButton";
 import { Platform } from "react-native";
+import OrderItem from "../../components/shop/OrderItem";
 
 const OrderScreen = (props) => {
   const { navigation } = props;
@@ -25,12 +26,16 @@ const OrderScreen = (props) => {
   const orders = useSelector((state) => state.order.orders);
   return (
     <View>
-      <Text>Order Screen</Text>
       <FlatList
         data={orders}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
-          return <Text>{item.totalAmount}</Text>;
+          return (
+            <OrderItem
+              amount={item.totalAmount}
+              date={item.readableDate}
+            ></OrderItem>
+          );
         }}
       ></FlatList>
     </View>
