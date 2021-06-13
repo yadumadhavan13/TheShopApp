@@ -10,10 +10,12 @@ import OrderScreen from "../screens/shop/OrderScreen";
 import Fonts from "../theme/Fonts";
 import Colors from "../theme/Colors";
 import { Ionicons } from "@expo/vector-icons";
+import UserProductScreen from "../screens/user/UserProductScreen";
 
 const DRAWER_ICON = {
   Products: Platform.OS === "android" ? "md-cart" : "ios-cart",
-  Order: Platform.OS === "android" ? "md-list" : "ios-list",
+  Orders: Platform.OS === "android" ? "md-list" : "ios-list",
+  UserProducts: Platform.OS === "android" ? "md-create" : "ios-create",
 };
 
 const createScreenOptions = ({ route }) => {
@@ -95,6 +97,34 @@ export const OrderStackNavigator = () => {
   );
 };
 
+const UserProductsStack = createStackNavigator();
+
+export const UserProductsStackNavigator = () => {
+  return (
+    <UserProductsStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Platform.OS === "android" ? Colors.main.primary : "",
+        },
+        headerTintColor:
+          Platform.OS === "android" ? "white" : Colors.main.primary,
+        headerTitleStyle: {
+          fontWeight: "bold",
+          fontFamily: Fonts.heading,
+        },
+      }}
+    >
+      <UserProductsStack.Screen
+        name="UserProducts"
+        component={UserProductScreen}
+        options={({ navigation }) => ({
+          title: "UserProducts",
+        })}
+      ></UserProductsStack.Screen>
+    </UserProductsStack.Navigator>
+  );
+};
+
 const ShopDrawer = createDrawerNavigator();
 
 export const ShopDrawerNavigator = () => (
@@ -109,7 +139,11 @@ export const ShopDrawerNavigator = () => (
       }}
     >
       <ShopDrawer.Screen name="Products" component={ProductStackNavigator} />
-      <ShopDrawer.Screen name="Order" component={OrderStackNavigator} />
+      <ShopDrawer.Screen name="Orders" component={OrderStackNavigator} />
+      <ShopDrawer.Screen
+        name="UserProducts"
+        component={UserProductsStackNavigator}
+      />
     </ShopDrawer.Navigator>
   </NavigationContainer>
 );
