@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { useSelector } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../components/ui/HeaderButton";
@@ -34,6 +34,7 @@ const OrderScreen = (props) => {
             <OrderItem
               amount={item.totalAmount}
               date={item.readableDate}
+              items={item.item}
             ></OrderItem>
           );
         }}
