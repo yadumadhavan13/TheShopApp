@@ -11,6 +11,7 @@ import Fonts from "../theme/Fonts";
 import Colors from "../theme/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import UserProductScreen from "../screens/user/UserProductScreen";
+import EditProductScreen from "../screens/user/EditProductScreen";
 
 const DRAWER_ICON = {
   Products: Platform.OS === "android" ? "md-cart" : "ios-cart",
@@ -119,6 +120,13 @@ export const UserProductsStackNavigator = () => {
         component={UserProductScreen}
         options={({ navigation }) => ({
           title: "UserProducts",
+        })}
+      ></UserProductsStack.Screen>
+      <UserProductsStack.Screen
+        name="EditProduct"
+        component={EditProductScreen}
+        options={({ navigation }) => ({
+          title: "Edit Product",
         })}
       ></UserProductsStack.Screen>
     </UserProductsStack.Navigator>

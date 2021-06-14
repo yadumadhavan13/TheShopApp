@@ -11,6 +11,9 @@ import * as productActions from "../../store/actions/Products";
 const UserProductScreen = (props) => {
   const { navigation } = props;
   const dispatch = useDispatch();
+  const editProductHandler = (id) => {
+    props.navigation.navigate("EditProduct", { productId: id });
+  };
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -36,12 +39,16 @@ const UserProductScreen = (props) => {
           image={item.imageUrl}
           title={item.title}
           price={item.price}
-          onSelect={() => {}}
+          onSelect={() => {
+            editProductHandler(item.id);
+          }}
         >
           <Button
             color={Colors.main.primary}
             title="Edit"
-            onPress={() => {}}
+            onPress={() => {
+              editProductHandler(item.id);
+            }}
           ></Button>
           <Button
             color={Colors.main.primary}
