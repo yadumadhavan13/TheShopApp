@@ -27,6 +27,17 @@ const UserProductScreen = (props) => {
           ></Item>
         </HeaderButtons>
       ),
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+          <Item
+            title="Create"
+            iconName={Platform.os === "android" ? "md-create" : "ios-create"}
+            onPress={() => {
+              props.navigation.navigate("EditProduct");
+            }}
+          ></Item>
+        </HeaderButtons>
+      ),
     });
   }, []);
   const userProducts = useSelector((state) => state.products.userProducts);
