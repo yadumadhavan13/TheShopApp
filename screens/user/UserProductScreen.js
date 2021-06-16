@@ -33,7 +33,7 @@ const UserProductScreen = (props) => {
             title="Create"
             iconName={Platform.os === "android" ? "md-create" : "ios-create"}
             onPress={() => {
-              props.navigation.navigate("EditProduct");
+              props.navigation.navigate("EditProduct", { productId: "" });
             }}
           ></Item>
         </HeaderButtons>
