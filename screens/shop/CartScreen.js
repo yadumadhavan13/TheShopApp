@@ -6,6 +6,7 @@ import Colors from "../../theme/Colors";
 import Fonts from "../../theme/Fonts";
 import * as cartActions from "../../store/actions/Cart";
 import * as orderActions from "../../store/actions/Orders";
+import Card from "../../components/ui/Card";
 
 const CartScreen = (props) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const CartScreen = (props) => {
   });
   return (
     <View style={styles.screen}>
-      <View style={styles.summary}>
+      <Card style={styles.summary}>
         <Text style={styles.summaryText}>
           <Text style={styles.amount}>
             ${(Math.round(cartTotalAmount.toFixed(2)) * 100) / 100}
@@ -41,7 +42,7 @@ const CartScreen = (props) => {
             dispatch(orderActions.addOrder(cartItems, cartTotalAmount));
           }}
         ></Button>
-      </View>
+      </Card>
       <View>
         <FlatList
           data={cartItems}
@@ -73,16 +74,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 20,
     padding: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowRadius: 8,
-    elevation: 5,
-    borderRadius: 10,
-    backgroundColor: "white",
   },
   summaryText: { fontFamily: Fonts.heading, fontSize: 18 },
   amount: { color: Colors.main.primary },

@@ -34,6 +34,7 @@ const EditProductScreen = (props) => {
         productActions.createProduct(title, description, imageUrl, +price)
       );
     }
+    props.navigation.goBack();
   };
 
   React.useLayoutEffect(() => {
