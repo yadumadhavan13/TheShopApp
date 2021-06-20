@@ -1,16 +1,18 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState } from "react";
 import { View, ScrollView, Text, TextInput, StyleSheet } from "react-native";
 import Fonts from "../../theme/Fonts";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../components/ui/HeaderButton";
 import { Platform } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import * as productActions from "../../store/actions/Products";
 
 const EditProductScreen = (props) => {
   const { productId } = props.route.params;
   const editedProduct = useSelector((state) =>
     state.products.userProducts.find((prod) => prod.id === productId)
   );
+  const dispatch = useDispatch();
 
   const [title, setTitle] = useState(editedProduct ? editedProduct.title : "");
   const [imageUrl, setImageUrl] = useState(
@@ -21,11 +23,18 @@ const EditProductScreen = (props) => {
     editedProduct ? editedProduct.description : ""
   );
 
-  const submitHandler = useCallback(() => {
-    console.log("submitting!!!");
-  }, []);
-
-  //useEffect(() => {}, [submitHandler]);
+  const submitHandler = () => {
+    console.log("submit pressed");
+    if (editedProduct) {
+      dispatch(
+        productActions.updateProduct(productId, title, description, imageUrl)
+      );
+    } else {
+      dispatch(
+        productActions.createProduct(title, description, imageUrl, +price)
+      );
+    }
+  };
 
   React.useLayoutEffect(() => {
     props.navigation.setOptions({
@@ -38,8 +47,7 @@ const EditProductScreen = (props) => {
               Platform.os === "android" ? "md-checkmark" : "ios-checkmark"
             }
             onPress={() => {
-              //console.log("submitting!!!");
-              submitHandler;
+              submitHandler();
             }}
           ></Item>
         </HeaderButtons>
