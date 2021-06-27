@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
+  Text,
   View,
   Button,
   FlatList,
@@ -70,6 +71,15 @@ const ProductOverViewScreen = (props) => {
       </View>
     );
   }
+
+  if (!isLoading && products.length == 0) {
+    return (
+      <View style={styles.centered}>
+        <Text>No products found. Start adding some...</Text>
+      </View>
+    );
+  }
+
   return (
     <FlatList
       data={products}
