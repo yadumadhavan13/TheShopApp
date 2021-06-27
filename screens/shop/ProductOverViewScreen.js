@@ -1,5 +1,12 @@
-import React, { useEffect } from "react";
-import { Button, FlatList, Platform } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  Button,
+  FlatList,
+  Platform,
+  ActivityIndicator,
+} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import ProductItem from "../../components/shop/ProductItem";
 import * as cartActions from "../../store/actions/Cart";
@@ -9,11 +16,17 @@ import Colors from "../../theme/Colors";
 import * as productActions from "../../store/actions/Products";
 
 const ProductOverViewScreen = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const products = useSelector((state) => state.products.availableProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(productActions.fetchProducts());
+    const loadProducts = async () => {
+      setIsLoading(true);
+      await dispatch(productActions.fetchProducts());
+      setIsLoading(false);
+    };
+    loadProducts();
   }, [dispatch]);
 
   const selectItemHandler = (id) => {
@@ -46,6 +59,17 @@ const ProductOverViewScreen = (props) => {
       ),
     });
   }, []);
+
+  if (isLoading) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator
+          size="large"
+          color={Colors.ui.primary}
+        ></ActivityIndicator>
+      </View>
+    );
+  }
   return (
     <FlatList
       data={products}
@@ -78,5 +102,9 @@ const ProductOverViewScreen = (props) => {
     ></FlatList>
   );
 };
+
+const styles = StyleSheet.create({
+  centered: { flex: 1, justifyContent: "center", alignItems: "center" },
+});
 
 export default ProductOverViewScreen;
