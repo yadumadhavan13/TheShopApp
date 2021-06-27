@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   Text,
@@ -18,17 +18,24 @@ import * as productActions from "../../store/actions/Products";
 
 const ProductOverViewScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const products = useSelector((state) => state.products.availableProducts);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      setIsLoading(true);
+  const loadProducts = useCallback(async () => {
+    setError(null);
+    setIsLoading(true);
+    try {
       await dispatch(productActions.fetchProducts());
-      setIsLoading(false);
-    };
+    } catch (error) {
+      setError(error.message);
+    }
+    setIsLoading(false);
+  }, [dispatch, setIsLoading, setError]);
+
+  useEffect(() => {
     loadProducts();
-  }, [dispatch]);
+  }, [dispatch, loadProducts]);
 
   const selectItemHandler = (id) => {
     props.navigation.navigate("ProductDetail", { productId: id });
@@ -60,6 +67,19 @@ const ProductOverViewScreen = (props) => {
       ),
     });
   }, []);
+
+  if (error) {
+    return (
+      <View style={styles.centered}>
+        <Text>An error has occured</Text>
+        <Button
+          title="Try again"
+          onPress={loadProducts}
+          color={Colors.ui.primary}
+        ></Button>
+      </View>
+    );
+  }
 
   if (isLoading) {
     return (
