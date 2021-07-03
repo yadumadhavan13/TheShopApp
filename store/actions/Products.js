@@ -43,7 +43,15 @@ export const fetchProducts = () => {
 };
 
 export const deleteProduct = (productId) => {
-  return { type: DELETE_PRODUCT, pid: productId };
+  return async (dispatch) => {
+    await fetch(
+      `https://theshopapp-2d510-default-rtdb.firebaseio.com/products/${productId}.json`,
+      {
+        method: "DELETE",
+      }
+    );
+    dispatch({ type: DELETE_PRODUCT, pid: productId });
+  };
 };
 
 export const createProduct = (title, description, imageUrl, price) => {
@@ -63,9 +71,7 @@ export const createProduct = (title, description, imageUrl, price) => {
         }),
       }
     );
-
     const resData = await response.json();
-
     dispatch({
       type: CREATE_PRODUCT,
       productData: {
@@ -95,7 +101,6 @@ export const updateProduct = (id, title, description, imageUrl) => {
         }),
       }
     );
-
     dispatch({
       type: UPDATE_PRODUCT,
       pid: id,
